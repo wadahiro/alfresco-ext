@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE beans PUBLIC '-//SPRING//DTD BEAN//EN' 'http://www.springframework.org/dtd/spring-beans.dtd'>
+ 
+<beans>
+
+   <bean id="transformer.PdfBox.TextToPdf"
+         class="org.alfresco.repo.content.transform.TextToPdfContentTransformer2"
+         parent="baseContentTransformer" >
+      <property name="fontEmbedded">
+          <value>true</value>
+      </property>
+      <property name="trueTypeFont">
+          <value>/usr/share/fonts/japanese/TrueType/sazanami-mincho.ttf</value>
+      </property>
+      <property name="encoding">
+          <value>Identity-H</value>
+      </property>
+      <property name="explicitTransformations">
+         <list>
+            <bean class="org.alfresco.repo.content.transform.ExplictTransformationDetails" >
+                <constructor-arg><value>text/plain</value></constructor-arg>
+                <constructor-arg><value>application/pdf</value></constructor-arg>
+            </bean>
+            <bean class="org.alfresco.repo.content.transform.ExplictTransformationDetails" >
+                <constructor-arg><value>text/csv</value></constructor-arg>
+                <constructor-arg><value>application/pdf</value></constructor-arg>
+            </bean>
+            <bean class="org.alfresco.repo.content.transform.ExplictTransformationDetails" >
+                <constructor-arg><value>text/xml</value></constructor-arg>
+                <constructor-arg><value>application/pdf</value></constructor-arg>
+            </bean>
+         </list>
+      </property>
+   </bean>
+          
+</beans>
